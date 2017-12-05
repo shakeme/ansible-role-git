@@ -1,0 +1,9 @@
+---
+# tasks for git at Debian
+
+- name: Ensure git
+  apt:
+    name: git
+    state: present
+  become: true
+

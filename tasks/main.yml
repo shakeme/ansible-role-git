@@ -1,0 +1,35 @@
+---
+# tasks file for git
+
+- block:
+
+  - include_tasks: "{{ ansible_os_family }}.yml"
+
+  - name: Set global user.name
+    git_config:
+      name: user.name
+      scope: global
+      value: "{{ git_global_user_name }}"
+    when: git_global_user_name != ""
+
+  - name: Set global user.email
+    git_config:
+      name: user.email
+      scope: global
+      value: "{{ git_global_user_email }}"
+    when: git_global_user_email != ""
+
+  - name: Set global alias ci > commit
+    git_config:
+      name: alias.ci
+      scope: global
+      value: commit
+
+  - name: Set global alias st > status
+    git_config:
+      name: alias.st
+      scope: global
+      value: status
+
+  when: role_git_enabled
+  tags: git

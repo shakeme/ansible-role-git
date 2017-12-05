@@ -1,0 +1,5 @@
+---
+# defaults file for git
+
+role_git_enabled: no
+
